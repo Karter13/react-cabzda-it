@@ -9,19 +9,23 @@ import {UnControlledRating} from "./UnControlledReting/UnControlledRating";
 function App() {
     console.log('App rendering');
     return (
-        <div>
+        <div className='App'>
 
             <OnOff/>
-            <OnOff/>
+            {/*<OnOff/>*/}
 
             <UnControlledAccordion titleValue={"Menu"}/>
-            <UnControlledAccordion titleValue={"Users"}/>
+            <UnControlledRating/>
 
+            {/*<Accordion titleValue={"Users"} collapsed={false} />
+            <Rating value={3}/>*/}
+
+
+            {/*<UnControlledAccordion titleValue={"Users"}/>*/}
+           {/* <UnControlledRating/>
             <UnControlledRating/>
             <UnControlledRating/>
-            <UnControlledRating/>
-            <UnControlledRating/>
-            <UnControlledRating/>
+            <UnControlledRating/>*/}
 
             {/*<PageTitle title={"This is APP component"}/>
             <PageTitle title={"My friends"}/>*/}
