@@ -16,8 +16,8 @@ function App() {
     return (
         <div className='App'>
 
-            <OnOff on={switchOn} activate={setSwitchOn}/>
-            <UnControlledOnOff/>
+            {/*<OnOff on={switchOn} activate={setSwitchOn}/>*/}
+            <UnControlledOnOff onChange={setSwitchOn} /> {switchOn.toString()}
 
             {/*<UnControlledAccordion titleValue={"Menu"}/>
             */}
