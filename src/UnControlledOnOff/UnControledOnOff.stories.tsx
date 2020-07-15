@@ -12,6 +12,4 @@ const callback = action('on ore off clicked');
 export const OnMode = () => <UnControlledOnOff defaultOn={true} onChange={callback}/>;
 export const OffMode = () => <UnControlledOnOff defaultOn={false} onChange={callback}/>;
 
-export const DefaultInput = () => <input defaultValue={'yo'}/>;
-
 
