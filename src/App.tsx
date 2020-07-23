@@ -23,7 +23,7 @@ function App() {
                 setAccordionCollapsed(!accordionCollapsed)
             }}/>
 
-            <UnControlledRating/>
+            {/*<UnControlledRating/>*/}
             <UnControlledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
             <UnControlledAccordion titleValue={'Menu'}/>
 
