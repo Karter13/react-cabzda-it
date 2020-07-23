@@ -1,14 +1,13 @@
 import React, {ChangeEvent, useRef, useState} from 'react';
 import {action} from '@storybook/addon-actions';
-import {OnOff} from "../OnOff/OnOff";
 
 export default {
     title: 'input',
     // component: OnOff,
 };
 
+//UnCONTROLLED elements
 export const UncontrolledInput = () => <input/>;
-
 export const ControlledInputFixedValue = () => <input value={'it-camasutra'}/>;
 
 export const TrackValueUnControlledInput = () => {
@@ -37,6 +36,8 @@ export const GetTrackValueUnControlledInputButtonPress = () => {
         -actual value: {value} </>;
 };
 
+
+//CONTROLLED elements
 export const ControlledInput = () => {
     const [parentValue, setParentValue] = useState('')
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +47,7 @@ export const ControlledInput = () => {
 };
 
 export const ControlledCheckBox = () => {
-    const [parentValue, setParentValue] = useState(false)
+    const [parentValue, setParentValue] = useState(false);
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         setParentValue(e.currentTarget.checked);
     };
@@ -54,7 +55,7 @@ export const ControlledCheckBox = () => {
 };
 
 export const ControlledSelect = () => {
-    const [parentValue, setParentValue] = useState<string | undefined>('2')
+    const [parentValue, setParentValue] = useState<string | undefined>(undefined);
     const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
         setParentValue(e.currentTarget.value);
     };
