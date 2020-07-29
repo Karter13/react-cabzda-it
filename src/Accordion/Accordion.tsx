@@ -12,6 +12,9 @@ type AccordionPropsType = {
     items: ItemType[]
     onClick: (value: any) => void
 }
+
+
+
 export function Accordion(props: AccordionPropsType) {
         return (
             <div>
