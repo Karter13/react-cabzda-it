@@ -19,9 +19,9 @@ function App() {
 
             <Rating value={ratingValue} onClick={setRatingValue}/>
             <OnOff on={switchOn} activate={setSwitchOn}/>
-            <Accordion titleValue={'Users'} collapsed={accordionCollapsed} onChange={() => {
-                setAccordionCollapsed(!accordionCollapsed)
-            }}/>
+            {/*<Accordion titleValue={'Users'} collapsed={accordionCollapsed} onChange={() => {*/}
+            {/*    setAccordionCollapsed(!accordionCollapsed)*/}
+            {/*}}/>*/}
 
             {/*<UnControlledRating/>*/}
             <UnControlledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
