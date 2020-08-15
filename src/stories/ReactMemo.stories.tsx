@@ -14,7 +14,7 @@ const NewMessagesCounter: React.FC<NewMessagesCounterPropsType> = (props) => {
 const Count = React.memo(NewMessagesCounter);
 
 
-type UsersPropsType = {
+export type UsersPropsType = {
     users: Array<string>
 }
 const UsersSecret: React.FC<UsersPropsType> = (props) => {
@@ -36,7 +36,7 @@ export const Example = () => {
     };
 
     const addName = () => {
-        let newUsers = [...users, 'Nikita' + '-' + new Date().getTime()];
+        let newUsers = [...users, 'Nikita -' + new Date().getTime()];
         setUsers(newUsers);
     };
 
