@@ -8,8 +8,11 @@ type NewMessagesCounterPropsType = {
     count: number
 }
 const NewMessagesCounter: React.FC<NewMessagesCounterPropsType> = (props) => {
+    console.log('COUNT');
     return <div>{props.count}</div>
 };
+const Count = React.memo(NewMessagesCounter);
+
 
 type UsersPropsType = {
     users: Array<string>
@@ -20,8 +23,8 @@ const UsersSecret: React.FC<UsersPropsType> = (props) => {
         {props.users.map((u, i) => <div key={i}>{u}</div>)}
     </div>
 };
-
 const Users = React.memo(UsersSecret);
+
 
 export const Example = () => {
 
@@ -37,12 +40,10 @@ export const Example = () => {
         setUsers(newUsers);
     };
 
-    // users.push('Nikita'+ '-' + new Date().getTime());
-
     return <>
         <button onClick={increase}>+</button>
         <button onClick={addName}>addName</button>
-        <NewMessagesCounter count={counter}/>
+        <Count count={counter}/>
         <Users users={users}/>
     </>
 };

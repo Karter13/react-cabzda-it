@@ -24,7 +24,6 @@ type AccordionTitlePropsType = {
     title: string
     onClick: () => void
 }
-
 function AccordionTitle(props: AccordionTitlePropsType) {
     return (
         <h3 onClick={() => {
@@ -34,7 +33,6 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 }
 
 type AccordionBodyPropsType = {}
-
 function AccordionBody(props: AccordionBodyPropsType) {
     return (
         <ul>
