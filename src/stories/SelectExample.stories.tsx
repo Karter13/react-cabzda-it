@@ -1,10 +1,8 @@
 import React, {ChangeEvent, useMemo, useState} from 'react';
 
-
 export default {
     title: 'SelectExample',
 };
-
 
 type CityType = {
     id: number
@@ -13,6 +11,27 @@ type CityType = {
     population: number
 }
 
+type SelectPropsType = {
+    change: (value: string) => void
+    value: string | undefined
+    cities: Array<CityType>
+}
+
+//
+const CitySelect: React.FC<SelectPropsType> = (props) => {
+    console.log('SELECT')
+
+    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        props.change(e.currentTarget.value);
+    };
+    return <select value={props.value} onChange={onChange}>
+        {
+            props.cities.map(c => <option key={c.id}>{c.city}</option>)
+        }
+    </select>
+};
+
+const Select = React.memo(CitySelect);
 
 export const ExampleSelect = () => {
     const [cities, setCities] = useState<Array<CityType>>([
@@ -26,43 +45,37 @@ export const ExampleSelect = () => {
         {id: 8, country: 'Belarus', city: 'Brest', population: 700000},
         {id: 9, country: 'Ukraine', city: 'Odessa', population: 800000},
     ]);
-
     const [parentValue, setParentValue] = useState<string | undefined>(undefined);
-
     const [counter, setCounter] = useState(0);
 
-
-    const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
-        setParentValue(e.currentTarget.value);
+    const onChange = (value: string) => {
+        setParentValue(value);
     };
-
 
     const citiesByCountries = useMemo(() => {
             const citiesByCountries = cities.filter(c => c.country === 'Belarus');
             return citiesByCountries;
         }, [cities]);
-
-
-
     const citiesPopulation = useMemo(() => {
         const citiesPopulation = cities.filter(c => c.population > 10000000);
         return citiesPopulation;
     }, [cities]);
-
-
-
     const cityWithM = useMemo(() => {
         const cityWithM = cities.filter(c => c.city.toLowerCase().includes('s'));
         return cityWithM;
     }, [cities]);
 
 
-
     return (
         <div>
             <button onClick={() => setCounter(counter + 1)} >+</button>
             {counter}
-            <select value={parentValue} onChange={onChange}>
+
+            <Select change={onChange} value={parentValue} cities={citiesByCountries}/>
+            <Select change={onChange} value={parentValue} cities={citiesPopulation}/>
+            <Select change={onChange} value={parentValue} cities={cityWithM}/>
+
+            {/*<select value={parentValue} onChange={onChange}>
 
                 {
                     citiesByCountries.map(c => <option key={c.id}>{c.city}</option>)
@@ -80,8 +93,7 @@ export const ExampleSelect = () => {
                     cityWithM.map(c => <option key={c.id}>{c.city}</option>)
                 }
 
-            </select>
+            </select>*/}
         </div>
-
     )
-}
+};
