@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useMemo, useState} from 'react';
+import React, {ChangeEvent, useCallback, useMemo, useState} from 'react';
 
 export default {
     title: 'SelectExample',
@@ -10,19 +10,19 @@ type CityType = {
     city: string
     population: number
 }
-
 type SelectPropsType = {
     change: (value: string) => void
     value: string | undefined
     cities: Array<CityType>
 }
 
-//
 const CitySelect: React.FC<SelectPropsType> = (props) => {
-    console.log('SELECT')
+    debugger
+    console.log('SELECT');
 
     const onChange = (e: ChangeEvent<HTMLSelectElement>) => {
         props.change(e.currentTarget.value);
+
     };
     return <select value={props.value} onChange={onChange}>
         {
@@ -48,9 +48,9 @@ export const ExampleSelect = () => {
     const [parentValue, setParentValue] = useState<string | undefined>(undefined);
     const [counter, setCounter] = useState(0);
 
-    const onChange = (value: string) => {
+    const onChange = useCallback((value: string) => {
         setParentValue(value);
-    };
+    }, [parentValue]);
 
     const citiesByCountries = useMemo(() => {
             const citiesByCountries = cities.filter(c => c.country === 'Belarus');
