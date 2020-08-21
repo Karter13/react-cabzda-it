@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {UsersPropsType} from './ReactMemo.stories';
 
 export default {
@@ -84,36 +84,49 @@ export const LikeUseCallback = () => {
     const [counter, setCounter] = useState(0);
     const [books, setBooks] = useState(['React','Redux','JS','HTML']);
 
-    const newArray = useMemo(() => {
+   /* const newArray = useMemo(() => {
         const newArray = books.filter(u => u.toLowerCase().indexOf('a') > -1);
         return newArray;
-    }, [books]);
+    }, [books]);*/
 
-    const addBook = () => {
+   /* const addBook = () => {
+        console.log(books);
         let newBooks = [...books, 'Angular -' + new Date().getTime()];
         setBooks(newBooks);
-    };
+    };*/
+
+    const memorizedAddBook = useMemo(() => {
+        return () => {
+            console.log(books);
+            let newBooks = [...books, 'Angular -' + new Date().getTime()];
+            setBooks(newBooks);
+        }
+    }, [books]);
+
+
+    const memorizedAddBook2 = useCallback( () => {
+            console.log(books);
+            let newBooks = [...books, 'Angular -' + new Date().getTime()];
+            setBooks(newBooks);
+    }, [books]);
 
 
     return <>
         <button onClick={() => setCounter(counter + 1)}>+</button>
-
         {counter}
-        <Book books={newArray} addBook={addBook}/>
+        <Book addBook={memorizedAddBook2}/>
     </>
 };
 
 type BooksSecretPropsType = {
-    books: Array<string>,
+    books?: Array<string>,
     addBook: ()=> void
 }
-
 const BooksSecret: React.FC<BooksSecretPropsType> = (props) => {
-    console.log(props.books)
     console.log('BOOKSSECRET');
     return <div>
-        <button onClick={() =>  props.addBook()}>add book</button>
-        {props.books.map((book, i) => <div key={i}>{book}</div>)}
+        <button onClick={() => props.addBook()}>add book</button>
+        {/*{props.books.map((book, i) => <div key={i}>{book}</div>)}*/}
     </div>
 };
 
