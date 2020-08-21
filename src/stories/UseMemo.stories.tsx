@@ -52,10 +52,7 @@ const UsersSecret: React.FC<UsersPropsType> = (props) => {
         {props.users.map((u, i) => <div key={i}>{u}</div>)}
     </div>
 };
-
 const Users = React.memo(UsersSecret);
-
-
 export const HelpsToReactMemo = () => {
     console.log('HelpsToReactMemo');
     const [counter, setCounter] = useState(0);
@@ -79,3 +76,44 @@ export const HelpsToReactMemo = () => {
         <Users users={newArray}/>
     </>
 };
+
+
+
+export const LikeUseCallback = () => {
+    console.log('likeUseCallback');
+    const [counter, setCounter] = useState(0);
+    const [books, setBooks] = useState(['React','Redux','JS','HTML']);
+
+    const newArray = useMemo(() => {
+        const newArray = books.filter(u => u.toLowerCase().indexOf('a') > -1);
+        return newArray;
+    }, [books]);
+
+    const addBook = () => {
+        let newBooks = [...books, 'Angular -' + new Date().getTime()];
+        setBooks(newBooks);
+    };
+
+
+    return <>
+        <button onClick={() => setCounter(counter + 1)}>+</button>
+
+        {counter}
+        <Book books={newArray} addBook={addBook}/>
+    </>
+};
+
+type BooksSecretPropsType = {
+    books: Array<string>,
+    addBook: ()=> void
+}
+
+const BooksSecret: React.FC<BooksSecretPropsType> = (props) => {
+    console.log('BOOKSSECRET');
+    return <div>
+        <button onClick={() =>  props.addBook()}>add book</button>
+        {props.books.map((book, i) => <div key={i}>{book}</div>)}
+    </div>
+};
+
+const Book = React.memo(BooksSecret);
