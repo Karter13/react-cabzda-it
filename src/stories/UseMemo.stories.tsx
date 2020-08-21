@@ -109,6 +109,7 @@ type BooksSecretPropsType = {
 }
 
 const BooksSecret: React.FC<BooksSecretPropsType> = (props) => {
+    console.log(props.books)
     console.log('BOOKSSECRET');
     return <div>
         <button onClick={() =>  props.addBook()}>add book</button>
@@ -117,3 +118,4 @@ const BooksSecret: React.FC<BooksSecretPropsType> = (props) => {
 };
 
 const Book = React.memo(BooksSecret);
+
