@@ -84,17 +84,7 @@ export const LikeUseCallback = () => {
     const [counter, setCounter] = useState(0);
     const [books, setBooks] = useState(['React','Redux','JS','HTML']);
 
-   /* const newArray = useMemo(() => {
-        const newArray = books.filter(u => u.toLowerCase().indexOf('a') > -1);
-        return newArray;
-    }, [books]);*/
-
-   /* const addBook = () => {
-        console.log(books);
-        let newBooks = [...books, 'Angular -' + new Date().getTime()];
-        setBooks(newBooks);
-    };*/
-
+    //variant with useMemo
     const memorizedAddBook = useMemo(() => {
         return () => {
             console.log(books);
@@ -103,7 +93,7 @@ export const LikeUseCallback = () => {
         }
     }, [books]);
 
-
+    //variant with useCallback
     const memorizedAddBook2 = useCallback( () => {
             console.log(books);
             let newBooks = [...books, 'Angular -' + new Date().getTime()];
