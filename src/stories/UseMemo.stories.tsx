@@ -78,22 +78,10 @@ export const HelpsToReactMemo = () => {
 };
 
 
-
 export const LikeUseCallback = () => {
     console.log('likeUseCallback');
     const [counter, setCounter] = useState(0);
     const [books, setBooks] = useState(['React','Redux','JS','HTML']);
-
-   /* const newArray = useMemo(() => {
-        const newArray = books.filter(u => u.toLowerCase().indexOf('a') > -1);
-        return newArray;
-    }, [books]);*/
-
-   /* const addBook = () => {
-        console.log(books);
-        let newBooks = [...books, 'Angular -' + new Date().getTime()];
-        setBooks(newBooks);
-    };*/
 
     const memorizedAddBook = useMemo(() => {
         return () => {
@@ -126,7 +114,6 @@ const BooksSecret: React.FC<BooksSecretPropsType> = (props) => {
     console.log('BOOKSSECRET');
     return <div>
         <button onClick={() => props.addBook()}>add book</button>
-        {/*{props.books.map((book, i) => <div key={i}>{book}</div>)}*/}
     </div>
 };
 
