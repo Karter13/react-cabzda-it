@@ -83,6 +83,10 @@ export const LikeUseCallback = () => {
     const [counter, setCounter] = useState(0);
     const [books, setBooks] = useState(['React','Redux','JS','HTML']);
 
+<<<<<<< HEAD
+=======
+    //variant with useMemo
+>>>>>>> e4b08961e0eb6280726ae4946122d4df9e5ae0c3
     const memorizedAddBook = useMemo(() => {
         return () => {
             console.log(books);
@@ -91,7 +95,7 @@ export const LikeUseCallback = () => {
         }
     }, [books]);
 
-
+    //variant with useCallback
     const memorizedAddBook2 = useCallback( () => {
             console.log(books);
             let newBooks = [...books, 'Angular -' + new Date().getTime()];

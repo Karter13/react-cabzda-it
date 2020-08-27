@@ -76,23 +76,19 @@ export const ExampleSelect = () => {
             <Select change={onChange} value={parentValue} cities={cityWithM}/>
 
             {/*<select value={parentValue} onChange={onChange}>
-
                 {
                     citiesByCountries.map(c => <option key={c.id}>{c.city}</option>)
                 }
-
             </select>
             <select value={parentValue} onChange={onChange}>
                 {
                     citiesPopulation.map(c => <option key={c.id}>{c.city}</option>)
                 }
-
             </select>
             <select value={parentValue} onChange={onChange}>
                 {
                     cityWithM.map(c => <option key={c.id}>{c.city}</option>)
                 }
-
             </select>*/}
         </div>
     )
