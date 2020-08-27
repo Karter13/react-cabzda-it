@@ -65,7 +65,6 @@ export const ExampleSelect = () => {
         return cityWithM;
     }, [cities]);
 
-
     return (
         <div>
             <button onClick={() => setCounter(counter + 1)} >+</button>
