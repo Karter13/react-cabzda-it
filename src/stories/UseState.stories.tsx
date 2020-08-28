@@ -13,11 +13,8 @@ function denerateData() {
 export const Example1 = () => {
     console.log('example1');
 
-    // const initvalue = useMemo(denerateData, []);
-
     //useState умеет без useMemo
     const [counter, setCounter] = useState<number>(denerateData);
-
 
     return <>
         <button onClick={() => setCounter(state => state + 1)}>+</button>
