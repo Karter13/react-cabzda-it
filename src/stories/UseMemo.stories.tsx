@@ -53,6 +53,7 @@ const UsersSecret: React.FC<UsersPropsType> = (props) => {
     </div>
 };
 const Users = React.memo(UsersSecret);
+
 export const HelpsToReactMemo = () => {
     console.log('HelpsToReactMemo');
     const [counter, setCounter] = useState(0);
@@ -68,7 +69,6 @@ export const HelpsToReactMemo = () => {
         setUsers(newUsers);
     };
 
-
     return <>
         <button onClick={() => setCounter(counter + 1)}>+</button>
         <button onClick={addUser}>add user</button>
@@ -83,13 +83,14 @@ export const LikeUseCallback = () => {
     const [counter, setCounter] = useState(0);
     const [books, setBooks] = useState(['React','Redux','JS','HTML']);
 
-    const memorizedAddBook = useMemo(() => {
-        return () => {
-            console.log(books);
-            let newBooks = [...books, 'Angular -' + new Date().getTime()];
-            setBooks(newBooks);
-        }
-    }, [books]);
+    //with using useMemo//
+    // const memorizedAddBook = useMemo(() => {
+    //     return () => {
+    //         console.log(books);
+    //         let newBooks = [...books, 'Angular -' + new Date().getTime()];
+    //         setBooks(newBooks);
+    //     }
+    // }, [books]);
 
     //variant with useCallback
     const memorizedAddBook2 = useCallback( () => {
