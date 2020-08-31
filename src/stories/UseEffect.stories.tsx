@@ -11,7 +11,7 @@ export const SimpleExample = () => {
 
     console.log('SimpleExample');
 
-    //асинхронные операции sidEffects
+    //АСИНХРОННЫЕ ОПЕРАЦИИ sidEffects
     //api.getUsers().then()
     //setInterval
     //indexedDB
@@ -19,19 +19,16 @@ export const SimpleExample = () => {
     //document.title = 'User'
 
     useEffect(() => {
-    debugger;
         document.title = counter.toString();
         console.log('useEffect every render');
     });
 
     useEffect(() => {
-    debugger;
         document.title = counter.toString();
         console.log('useEffect only first render(componentDidMount)');
     }, []);
 
     useEffect(() => {
-    debugger;
         document.title = counter.toString();
         console.log('useEffect depend of counter');
     }, [counter]);
@@ -71,5 +68,39 @@ export const SetTimeoutExample = () => {
 
     return <>
         Hello, counter: {counter} - fake: {fake}
+    </>
+};
+
+
+export const SetClockExample = () => {
+
+    // const date = new Date();
+    // const getClock = () => {
+    //     return
+    // }
+    //  date.getHours();
+    //  date.getMinutes();
+    //  date.getSeconds();
+    // const clocks = `${clock}:${minutes}:${seconds}`;
+
+    const [counter, setCounter] = useState(new Date().toLocaleTimeString() );
+
+    console.log('SetTimeoutExample');
+
+
+    useEffect(() => {
+
+        setInterval(() => {
+
+            // setCounter(state => state + 1);
+            setCounter(new Date().toLocaleTimeString());
+
+        }, 1000);
+
+    }, []);
+
+
+    return <>
+        CLOCK: {counter}
     </>
 };
