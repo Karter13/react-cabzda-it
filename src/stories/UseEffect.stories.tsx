@@ -71,36 +71,3 @@ export const SetTimeoutExample = () => {
     </>
 };
 
-
-export const SetClockExample = () => {
-
-    // const date = new Date();
-    // const getClock = () => {
-    //     return
-    // }
-    //  date.getHours();
-    //  date.getMinutes();
-    //  date.getSeconds();
-    // const clocks = `${clock}:${minutes}:${seconds}`;
-
-    const [counter, setCounter] = useState(new Date().toLocaleTimeString() );
-
-    console.log('SetTimeoutExample');
-
-
-    useEffect(() => {
-
-        setInterval(() => {
-
-            // setCounter(state => state + 1);
-            setCounter(new Date().toLocaleTimeString());
-
-        }, 1000);
-
-    }, []);
-
-
-    return <>
-        CLOCK: {counter}
-    </>
-};
