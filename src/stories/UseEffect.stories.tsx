@@ -41,7 +41,7 @@ export const SimpleExample = () => {
     </>
 };
 
-export const SetTimeoutExample = () => {
+export const SetIntervalExample = () => {
 
     const [fake, setFake] = useState(1);
     const [counter, setCounter] = useState(1);
@@ -59,9 +59,13 @@ export const SetTimeoutExample = () => {
 
     useEffect(() => {
 
-        setInterval(() => {
+        let intervalId = setInterval(() => {
             setCounter(state => state + 1);
         }, 1000);
+
+        return () => {
+            clearInterval(intervalId)
+        }
 
     }, []);
 
@@ -97,11 +101,10 @@ export const ResetEffectExample = () => {
 
 export const KeysTrackerExample = () => {
     const [text, setText] = useState('');
-    console.log('Component rendered with' + '-'+ text);
+    console.log('Component rendered with -'+ text);
 
 
     useEffect(() => {
-
         const hendler = (e: KeyboardEvent) => {
             console.log(e.key);
             setText(text + e.key)
@@ -116,5 +119,26 @@ export const KeysTrackerExample = () => {
 
     return <>
         Typed text: {text}
+    </>
+};
+
+export const SetTimeoutExample = () => {
+    const [text, setText] = useState('');
+    console.log('Component rendered with -' + text);
+
+    useEffect(() => {
+
+      const timeoutId = setTimeout(() => {
+           console.log('TIMEOUT EXPIRED');
+           setText('3 seconds after')
+       }, 3000);
+        return () => {
+            clearTimeout(timeoutId)
+        }
+    }, [text]);
+
+
+    return <>
+        text: {text}
     </>
 };
